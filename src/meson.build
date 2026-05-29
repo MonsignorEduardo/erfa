@@ -38,11 +38,13 @@ liberfa = library(
     'xy06.c', 'xys00a.c', 'xys00b.c', 'xys06a.c', 'zp.c', 'zpv.c', 'zr.c',
     'erfaversion.c', 'erfadatextra.c',
     dependencies: libm,
+    c_args: ['-w'],
     version: soversion,
     install: true,
 )
 
 erfa_dep = declare_dependency(link_with: liberfa, include_directories: '.')
+meson.override_dependency('erfa', erfa_dep)
 install_headers('erfa.h', 'erfam.h', 'erfaextra.h', 'erfadatextra.h')
 
 foreach t: ['t_erfa_c', 't_erfa_c_extra']
