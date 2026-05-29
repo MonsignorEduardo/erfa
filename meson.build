@@ -39,5 +39,3 @@ import('pkgconfig').generate(
     name: 'Erfa',
     description: 'Essential Routines for Fundamental Astronomy',
 )
-
-meson.add_dist_script('./bootstrap.sh')
