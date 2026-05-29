@@ -1,7 +1,7 @@
 configure_file(output: 'config.h', configuration: confdata)
 add_project_arguments('-DHAVE_CONFIG_H', language: 'c')
 
-liberfa = both_libraries(
+liberfa = static_library(
     'erfa',
     'a2af.c', 'a2tf.c', 'ab.c', 'ae2hd.c', 'af2a.c', 'anp.c', 'anpm.c', 'apcg13.c',
     'apcg.c', 'apci13.c', 'apci.c', 'apco13.c', 'apco.c', 'apcs13.c', 'apcs.c', 'aper13.c',
@@ -43,7 +43,7 @@ liberfa = both_libraries(
     install: true,
 )
 
-erfa_dep = declare_dependency(link_with: liberfa.get_static_lib(), include_directories: '.')
+erfa_dep = declare_dependency(link_with: liberfa, include_directories: '.')
 meson.override_dependency('erfa', erfa_dep)
 install_headers('erfa.h', 'erfam.h', 'erfaextra.h', 'erfadatextra.h')
 
