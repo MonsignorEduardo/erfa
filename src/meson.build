@@ -39,7 +39,6 @@ liberfa = static_library(
     'erfaversion.c', 'erfadatextra.c',
     dependencies: libm,
     c_args: ['-w'],
-    version: soversion,
     install: true,
 )
 
